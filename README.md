@@ -11,8 +11,9 @@ Tener en cuenta que:
 El Mars Rover siempre empieza en un punto inicial (x,y) y apuntando a un punto cardinal (N,S,E,O)
 El Rover recibe una secuencia de caracteres que representan comandos sobre cómo moverse.
 Los comandos pueden ser:
-f = mover hacia adelante un punto (forward)
-b = mover hacia atrás un punto (backwards)
-l = rotar 90 grados a la izquierda
-r = rotar 90 grados a la derecha
+  f = mover hacia adelante un punto (forward)
+  b = mover hacia atrás un punto (backwards)
+  l = rotar 90 grados a la izquierda
+  r = rotar 90 grados a la derecha
+
 Resolverlo por medio de TDD.
