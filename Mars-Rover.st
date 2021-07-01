@@ -274,19 +274,18 @@ test18MoveInDifferentDirections
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:59:02'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 23:04:50'!
 test19OnCommandFailureStopsMoving
 	|marsRover|
 	
 	marsRover _ MarsRover createAt: 0@0 pointingTo: N.
-	marsRover moveTo: 'ffybfff'.
-	"
+	
 	self
 		should: [ marsRover moveTo: 'ffybfff' ]
 		raise: Error - MessageNotUnderstood 
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = MarsRover notValidMovementException ].
-	"
+	
 	self assert: marsRover isAt equals: 0@2.
 	self assert: marsRover pointsTo equals: 0@1.
 	
@@ -358,7 +357,7 @@ Object subclass: #Commands
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!Commands methodsFor: 'nil' stamp: 'fran 6/30/2021 22:32:48'!
+!Commands methodsFor: 'movement' stamp: 'fran 6/30/2021 22:32:48'!
 move: aMarsRover
 	self subclassResponsibility.! !
 
@@ -368,18 +367,17 @@ move: aMarsRover
 Commands class
 	instanceVariableNames: ''!
 
-!Commands class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:22:26'!
+!Commands class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 23:25:53'!
 canHandle: aCommand
 	self subclassResponsibility.! !
 
-!Commands class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:22:20'!
+!Commands class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 23:26:21'!
 for: aCommand
 	self subclassResponsibility.! !
 
-!Commands class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:36:55'!
-with: aCommand
-	^ (Commands allSubclasses detect: [:aClass | aClass canHandle: aCommand]) for: aCommand.
-	! !
+!Commands class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 23:28:47'!
+with: commandString
+	^ (self allSubclasses detect: [:aClass | aClass canHandle: commandString ]) for: commandString.! !
 
 
 !classDefinition: #Backward category: 'Mars-Rover'!
@@ -389,7 +387,7 @@ Commands subclass: #Backward
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!Backward methodsFor: 'nil' stamp: 'fran 6/30/2021 22:31:54'!
+!Backward methodsFor: 'movement' stamp: 'fran 6/30/2021 22:31:54'!
 move: aMarsRover
 	aMarsRover moveBackward.! !
 
@@ -399,11 +397,11 @@ move: aMarsRover
 Backward class
 	instanceVariableNames: ''!
 
-!Backward class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:23:02'!
+!Backward class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:23:02'!
 canHandle: aCommand
 	^ aCommand = 'b'.! !
 
-!Backward class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:24:21'!
+!Backward class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:24:21'!
 for: aCommand
 	^ self new.! !
 
@@ -415,7 +413,7 @@ Commands subclass: #CommandNotValid
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!CommandNotValid methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:47:16'!
+!CommandNotValid methodsFor: 'movement' stamp: 'fran 6/30/2021 22:47:16'!
 move: aMarsRover
 	^ aMarsRover notValidMovement.! !
 
@@ -425,11 +423,11 @@ move: aMarsRover
 CommandNotValid class
 	instanceVariableNames: ''!
 
-!CommandNotValid class methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:56:04'!
+!CommandNotValid class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:56:04'!
 canHandle: aCommand
 	^ (aCommand = 'f') not and: [(aCommand = 'b') not and: [(aCommand = 'l') not and: [(aCommand = 'r') not]]].! !
 
-!CommandNotValid class methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:41:18'!
+!CommandNotValid class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:41:18'!
 for: aCommand
 	^ self new.! !
 
@@ -441,7 +439,7 @@ Commands subclass: #Forward
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!Forward methodsFor: 'nil' stamp: 'fran 6/30/2021 22:32:10'!
+!Forward methodsFor: 'movement' stamp: 'fran 6/30/2021 22:32:10'!
 move: aMarsRover
 	aMarsRover moveForward.! !
 
@@ -451,11 +449,11 @@ move: aMarsRover
 Forward class
 	instanceVariableNames: ''!
 
-!Forward class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:23:17'!
+!Forward class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:23:17'!
 canHandle: aCommand
 	^ aCommand = 'f'.! !
 
-!Forward class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:24:27'!
+!Forward class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:24:27'!
 for: aCommand
 	^ self new.! !
 
@@ -467,7 +465,7 @@ Commands subclass: #RotateLeft
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!RotateLeft methodsFor: 'nil' stamp: 'fran 6/30/2021 22:32:22'!
+!RotateLeft methodsFor: 'movement' stamp: 'fran 6/30/2021 22:32:22'!
 move: aMarsRover
 	aMarsRover rotateLeft.! !
 
@@ -477,11 +475,11 @@ move: aMarsRover
 RotateLeft class
 	instanceVariableNames: ''!
 
-!RotateLeft class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:23:26'!
+!RotateLeft class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:23:26'!
 canHandle: aCommand
 	^ aCommand = 'l'.! !
 
-!RotateLeft class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:24:31'!
+!RotateLeft class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:24:31'!
 for: aCommand
 	^ self new.! !
 
@@ -493,7 +491,7 @@ Commands subclass: #RotateRight
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!RotateRight methodsFor: 'nil' stamp: 'fran 6/30/2021 22:32:32'!
+!RotateRight methodsFor: 'movement' stamp: 'fran 6/30/2021 22:32:32'!
 move: aMarsRover
 	aMarsRover rotateRight.! !
 
@@ -503,11 +501,11 @@ move: aMarsRover
 RotateRight class
 	instanceVariableNames: ''!
 
-!RotateRight class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:23:33'!
+!RotateRight class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:23:33'!
 canHandle: aCommand
 	^ aCommand = 'r'.! !
 
-!RotateRight class methodsFor: 'nil' stamp: 'fran 6/30/2021 22:24:34'!
+!RotateRight class methodsFor: 'instance creation' stamp: 'fran 6/30/2021 22:24:34'!
 for: aCommand
 	^ self new.! !
 
@@ -519,31 +517,15 @@ Object subclass: #MarsRover
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!MarsRover methodsFor: 'movement' stamp: 'fran 6/30/2021 22:28:00'!
-moveBackward
-	currentPosition := currentPosition - currentCardinalDirection! !
-
-!MarsRover methodsFor: 'movement' stamp: 'fran 6/30/2021 22:27:46'!
-moveForward
-	currentPosition := currentPosition + currentCardinalDirection! !
-
-!MarsRover methodsFor: 'movement' stamp: 'fran 6/30/2021 22:49:09'!
+!MarsRover methodsFor: 'movement' stamp: 'fran 6/30/2021 23:32:35'!
 moveTo: aCommandString
 	|commandString command|
 
 	1 to: aCommandString size do: [ :atIndex | 
-			commandString := (aCommandString at: atIndex) asString.
-			command := Commands with: commandString.
+			commandString _ (aCommandString at: atIndex) asString.
+			command _ Commands with: commandString.
 			command move: self.
 	]! !
-
-!MarsRover methodsFor: 'movement' stamp: 'fran 6/30/2021 22:28:13'!
-rotateLeft
-	currentCardinalDirection := (currentCardinalDirection rotatedBy: (Float pi / 2)) truncated! !
-
-!MarsRover methodsFor: 'movement' stamp: 'fran 6/30/2021 22:28:23'!
-rotateRight
-	currentCardinalDirection := (currentCardinalDirection rotatedBy: (3 * Float pi / 2)) truncated! !
 
 
 !MarsRover methodsFor: 'position' stamp: 'fran 6/28/2021 23:21:03'!
@@ -562,9 +544,25 @@ initializeWith: aPosition pointingTo: aCardinalDirection
 	! !
 
 
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:48:25'!
+!MarsRover methodsFor: 'private' stamp: 'fran 6/30/2021 23:32:06'!
+moveBackward
+	currentPosition _ currentPosition - currentCardinalDirection! !
+
+!MarsRover methodsFor: 'private' stamp: 'fran 6/30/2021 23:32:10'!
+moveForward
+	currentPosition _ currentPosition + currentCardinalDirection! !
+
+!MarsRover methodsFor: 'private' stamp: 'fran 6/30/2021 23:04:22'!
 notValidMovement
-	^ self error: [MarsRover notValidMovementException].! !
+	^ self error: MarsRover notValidMovementException.! !
+
+!MarsRover methodsFor: 'private' stamp: 'fran 6/30/2021 23:32:16'!
+rotateLeft
+	currentCardinalDirection _ (currentCardinalDirection rotatedBy: (Float pi / 2)) truncated! !
+
+!MarsRover methodsFor: 'private' stamp: 'fran 6/30/2021 23:32:21'!
+rotateRight
+	currentCardinalDirection _ (currentCardinalDirection rotatedBy: (3 * Float pi / 2)) truncated! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -572,10 +570,11 @@ notValidMovement
 MarsRover class
 	instanceVariableNames: ''!
 
-!MarsRover class methodsFor: 'as yet unclassified' stamp: 'fran 6/28/2021 23:11:46'!
+!MarsRover class methodsFor: 'instance creation' stamp: 'fran 6/28/2021 23:11:46'!
 createAt: aPosition pointingTo: aCardinalPoint
 	^ self new initializeWith: aPosition pointingTo: aCardinalPoint.! !
 
-!MarsRover class methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:48:49'!
+
+!MarsRover class methodsFor: 'error description' stamp: 'fran 6/30/2021 23:03:05'!
 notValidMovementException
 	^ 'The movement is not valid'.! !
