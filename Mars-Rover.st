@@ -5,7 +5,7 @@ TestCase subclass: #MarsRoverTests
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:38:09'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 17:43:30'!
 setUp
 	N _ North new.
 	S _ South new.
@@ -293,6 +293,44 @@ test19OnCommandFailureStopsMoving
 	
 	! !
 
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 17:46:20'!
+test20WithUpperCaseCommandDoesNotMove
+	|marsRover|
+	
+	marsRover _ MarsRover createAt: 0@0 pointingTo: N.
+	
+	self
+		should: [ marsRover moveTo: 'FBF' ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = MarsRover notValidMovementException ].
+	
+	self assert: marsRover isAt equals: 0@0.
+	self assert: marsRover pointsTo equals: 0@1.
+	
+	
+	
+	! !
+
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 17:47:09'!
+test21WithNumericCommandDoesNotMove
+	|marsRover|
+	
+	marsRover _ MarsRover createAt: 0@0 pointingTo: N.
+	
+	self
+		should: [ marsRover moveTo: '66' ]
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = MarsRover notValidMovementException ].
+	
+	self assert: marsRover isAt equals: 0@0.
+	self assert: marsRover pointsTo equals: 0@1.
+	
+	
+	
+	! !
+
 
 !classDefinition: #CardinalDirection category: 'Mars-Rover'!
 Object subclass: #CardinalDirection
@@ -570,9 +608,9 @@ rotateRight
 MarsRover class
 	instanceVariableNames: ''!
 
-!MarsRover class methodsFor: 'instance creation' stamp: 'fran 6/28/2021 23:11:46'!
-createAt: aPosition pointingTo: aCardinalPoint
-	^ self new initializeWith: aPosition pointingTo: aCardinalPoint.! !
+!MarsRover class methodsFor: 'instance creation' stamp: 'fran 7/1/2021 17:42:59'!
+createAt: aPosition pointingTo: aCardinalDirection
+	^ self new initializeWith: aPosition pointingTo: aCardinalDirection.! !
 
 
 !MarsRover class methodsFor: 'error description' stamp: 'fran 6/30/2021 23:03:05'!
