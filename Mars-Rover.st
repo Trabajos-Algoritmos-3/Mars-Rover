@@ -12,7 +12,7 @@ setUp
 	E _ East new.
 	W _ West new.! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 22:56:43'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:12:31'!
 test01WithoutCommandsDoesNotMove
 	|marsRover|
 	
@@ -21,13 +21,13 @@ test01WithoutCommandsDoesNotMove
 	marsRover moveTo: ''.
 	
 	self assert: marsRover isAt equals: 5@5.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:04'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:12:47'!
 test02MoveForwardPointingNorth
 	|marsRover|
 	
@@ -36,13 +36,13 @@ test02MoveForwardPointingNorth
 	marsRover moveTo: 'f'.
 	
 	self assert: marsRover isAt equals: 5@6.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:08'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:12:53'!
 test03MoveBackwardPointingNorth
 	|marsRover|
 	
@@ -51,13 +51,13 @@ test03MoveBackwardPointingNorth
 	marsRover moveTo: 'b'.
 	
 	self assert: marsRover isAt equals: 5@4.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:12'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:13:12'!
 test04MoveForwardPointingSouth
 	|marsRover|
 	
@@ -66,13 +66,13 @@ test04MoveForwardPointingSouth
 	marsRover moveTo: 'f'.
 	
 	self assert: marsRover isAt equals: 5@4.
-	self assert: marsRover pointsTo equals: 0@-1.
+	self assert: marsRover pointsTo equals: S cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:16'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:13:24'!
 test05MoveBarckwardPointingSouth
 	|marsRover|
 	
@@ -81,13 +81,13 @@ test05MoveBarckwardPointingSouth
 	marsRover moveTo: 'b'.
 	
 	self assert: marsRover isAt equals: 5@6.
-	self assert: marsRover pointsTo equals: 0@-1.
+	self assert: marsRover pointsTo equals: S cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:20'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:13:39'!
 test06MoveForwardPointingEast
 	|marsRover|
 	
@@ -96,13 +96,13 @@ test06MoveForwardPointingEast
 	marsRover moveTo: 'f'.
 	
 	self assert: marsRover isAt equals: 6@5.
-	self assert: marsRover pointsTo equals: 1@0.
+	self assert: marsRover pointsTo equals: E cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:24'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:13:49'!
 test07MoveBackwardPointingEast
 	|marsRover|
 	
@@ -111,13 +111,13 @@ test07MoveBackwardPointingEast
 	marsRover moveTo: 'b'.
 	
 	self assert: marsRover isAt equals: 4@5.
-	self assert: marsRover pointsTo equals: 1@0.
+	self assert: marsRover pointsTo equals: E cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:33'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:13:58'!
 test08MoveForwardPointingWest
 	|marsRover|
 	
@@ -126,13 +126,13 @@ test08MoveForwardPointingWest
 	marsRover moveTo: 'f'.
 	
 	self assert: marsRover isAt equals: 4@5.
-	self assert: marsRover pointsTo equals: -1@0.
+	self assert: marsRover pointsTo equals: W cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:39:41'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:14:06'!
 test09MoveBackwardPointingWest
 	|marsRover|
 	
@@ -141,13 +141,13 @@ test09MoveBackwardPointingWest
 	marsRover moveTo: 'b'.
 	
 	self assert: marsRover isAt equals: 6@5.
-	self assert: marsRover pointsTo equals: -1@0.
+	self assert: marsRover pointsTo equals: W cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:51:29'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:14:22'!
 test10PointingNorthRotateRight
 	|marsRover|
 	
@@ -155,13 +155,13 @@ test10PointingNorthRotateRight
 	
 	marsRover moveTo: 'r'.
 	
-	self assert: marsRover pointsTo equals: 1@0.
+	self assert: marsRover pointsTo equals: E cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:49:59'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:14:32'!
 test11PointingNorthRotateLeft
 	|marsRover|
 	
@@ -169,13 +169,13 @@ test11PointingNorthRotateLeft
 	
 	marsRover moveTo: 'l'.
 	
-	self assert: marsRover pointsTo equals: -1@0.
+	self assert: marsRover pointsTo equals: W cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:07'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:14:43'!
 test12PointingSouthRotateRight
 	|marsRover|
 	
@@ -183,13 +183,13 @@ test12PointingSouthRotateRight
 	
 	marsRover moveTo: 'r'.
 	
-	self assert: marsRover pointsTo equals: -1@0.
+	self assert: marsRover pointsTo equals: W cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:12'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:14:54'!
 test13PointingSouthRotateLeft
 	|marsRover|
 	
@@ -197,13 +197,13 @@ test13PointingSouthRotateLeft
 	
 	marsRover moveTo: 'l'.
 	
-	self assert: marsRover pointsTo equals: 1@0.
+	self assert: marsRover pointsTo equals: E cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:17'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:15:04'!
 test14PointingEastRotateRight
 	|marsRover|
 	
@@ -211,13 +211,13 @@ test14PointingEastRotateRight
 	
 	marsRover moveTo: 'r'.
 	
-	self assert: marsRover pointsTo equals: 0@-1.
+	self assert: marsRover pointsTo equals: S cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:39'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:15:17'!
 test15PointingEastRotateLeft
 	|marsRover|
 	
@@ -225,13 +225,13 @@ test15PointingEastRotateLeft
 	
 	marsRover moveTo: 'l'.
 	
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:43'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:15:39'!
 test16PointingWestRotateRight
 	|marsRover|
 	
@@ -239,13 +239,13 @@ test16PointingWestRotateRight
 	
 	marsRover moveTo: 'r'.
 	
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:47'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:15:50'!
 test17PointingWestRotateLeft
 	|marsRover|
 	
@@ -253,13 +253,13 @@ test17PointingWestRotateLeft
 	
 	marsRover moveTo: 'l'.
 	
-	self assert: marsRover pointsTo equals: 0@-1.
+	self assert: marsRover pointsTo equals: S cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/29/2021 19:50:58'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:16:03'!
 test18MoveInDifferentDirections
 	|marsRover|
 	
@@ -268,13 +268,13 @@ test18MoveInDifferentDirections
 	marsRover moveTo: 'ffrblfb'.
 	
 	self assert: marsRover isAt equals: -1@2.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 6/30/2021 23:04:50'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:16:18'!
 test19OnCommandFailureStopsMoving
 	|marsRover|
 	
@@ -287,13 +287,13 @@ test19OnCommandFailureStopsMoving
 			self assert: anError messageText = MarsRover notValidMovementException ].
 	
 	self assert: marsRover isAt equals: 0@2.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 17:46:20'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:16:33'!
 test20WithUpperCaseCommandDoesNotMove
 	|marsRover|
 	
@@ -306,13 +306,13 @@ test20WithUpperCaseCommandDoesNotMove
 			self assert: anError messageText = MarsRover notValidMovementException ].
 	
 	self assert: marsRover isAt equals: 0@0.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
 	! !
 
-!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 17:47:09'!
+!MarsRoverTests methodsFor: 'as yet unclassified' stamp: 'fran 7/1/2021 18:16:40'!
 test21WithNumericCommandDoesNotMove
 	|marsRover|
 	
@@ -325,7 +325,7 @@ test21WithNumericCommandDoesNotMove
 			self assert: anError messageText = MarsRover notValidMovementException ].
 	
 	self assert: marsRover isAt equals: 0@0.
-	self assert: marsRover pointsTo equals: 0@1.
+	self assert: marsRover pointsTo equals: N cardinalDirection.
 	
 	
 	
@@ -347,7 +347,7 @@ CardinalDirection subclass: #East
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!East methodsFor: 'private' stamp: 'fran 6/29/2021 19:36:24'!
+!East methodsFor: 'direction' stamp: 'fran 6/29/2021 19:36:24'!
 cardinalDirection
 	^  1@0! !
 
@@ -359,7 +359,7 @@ CardinalDirection subclass: #North
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!North methodsFor: 'private' stamp: 'fran 6/29/2021 19:36:00'!
+!North methodsFor: 'direction' stamp: 'fran 6/29/2021 19:36:00'!
 cardinalDirection
 	^  0@1! !
 
@@ -371,7 +371,7 @@ CardinalDirection subclass: #South
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!South methodsFor: 'private' stamp: 'fran 6/29/2021 19:36:42'!
+!South methodsFor: 'direction' stamp: 'fran 6/29/2021 19:36:42'!
 cardinalDirection
 	^  0@-1! !
 
@@ -383,7 +383,7 @@ CardinalDirection subclass: #West
 	poolDictionaries: ''
 	category: 'Mars-Rover'!
 
-!West methodsFor: 'private' stamp: 'fran 6/29/2021 19:36:50'!
+!West methodsFor: 'direction' stamp: 'fran 6/29/2021 19:36:50'!
 cardinalDirection
 	^  -1@0! !
 
